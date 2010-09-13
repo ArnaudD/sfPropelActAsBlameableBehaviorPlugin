@@ -15,12 +15,12 @@
  * @author     Arnaud Didry
  * @package    propel.generator.behavior
  */
-class BlameableBehavior extends Behavior
+class SfPropelBehaviorBlameable extends SfPropelBehaviorBase
 {
 	// default parameters value
 	protected $parameters = array(
 		'create_column' => 'created_by',
-		'update_column' => 'updated_by'
+		'update_column' => 'updated_by',
 		'delete_column' => 'deleted_by'
 	);
 	
@@ -127,6 +127,22 @@ class BlameableBehavior extends Behavior
 		$php = '';
 
 		if($this->hasColumn('create_column'))
+		{
+		    $php .= "
+/**
+ * Mark the current object so that the created_by column doesn't get updated during next save
+ *
+ * @return     " . $builder->getStubObjectBuilder()->getClassname() . " The current object (for fluent API support)
+ */
+public function keepCreatedByUnchanged()
+{
+	\$this->modifiedColumns[] = " . $this->getColumnConstant('create_column', $builder) . ";
+	return \$this;
+}
+";
+        }
+	  
+		if($this->hasColumn('update_column'))
 		{
 		    $php .= "
 /**
