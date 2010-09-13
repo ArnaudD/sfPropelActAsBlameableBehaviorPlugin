@@ -1,0 +1,7 @@
+lib/model
+lib/form
+lib/filter
+test/fixtures/project/lib/*
+test/fixtures/project/cache/*
+test/fixtures/project/log/*
+test/fixtures/project/data/sql/*
