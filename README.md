@@ -1,3 +1,5 @@
+__WARNING__ ! Since the [versionable behavior was introduced in Propel 1.6](http://propel.posterous.com/propel-16-gets-versionable-behavior-with-a-tw) I'm not sure if I will maintain this plugin anymore.
+
 This symfony plugin allows to track the author of a creation, modification or deletion of a Propel model object.
 
 It is only compatible with Propel-1.5.x
