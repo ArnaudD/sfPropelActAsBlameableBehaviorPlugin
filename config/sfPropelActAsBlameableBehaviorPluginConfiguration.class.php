@@ -16,7 +16,6 @@ class sfPropelActAsBlameableBehaviorPluginConfiguration extends sfPluginConfigur
    */
   public function initialize()
   {
-      touch ('/tmp/aouch');
     $this->configuration->getEventDispatcher()->connect('plugin.pre_install', array($this, 'postInstall'));
   }
   
@@ -27,7 +26,6 @@ class sfPropelActAsBlameableBehaviorPluginConfiguration extends sfPluginConfigur
    */
   public function postInstall(sfEvent $event) 
   {
-      touch ('/tmp/blameme');
       $command = new propelConfigureblameablebehaviorTask();
       $command->run();
   }
